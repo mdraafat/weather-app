@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container d-flex flex-column">
+        <h1 class="text-center my-5">Weather Application</h1>
+        <form class="d-flex w-75 align-self-center " role="search">
+            <input id="locationInput" class="form-control me-2" type="search" placeholder="Type your location"
+                aria-label="Search">
+            <button id="searchButton" class="btn btn-success" type="submit">Search</button>
+        </form>
+        <!-- codepen -->
+        <div class='planet-container my-5 align-self-center'>
+            <div class='night'></div>
+            <div class='day'></div>
+            <div class='clouds'></div>
+            <div class='inner-shadow'></div>
+        </div>
+        <div class="row text-center gx-4">
+            <div class="col-lg-4 col-md-12 my-4">
+                <div id="day-1" class="card h-100 justify-content-between" >
+                    
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-12 my-4">
+                <div id="day-2" class="card h-100 justify-content-between">
+                    
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-12 my-4">
+                <div id="day-3" class="card h-100 justify-content-between">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+
+</html>
