@@ -7,7 +7,7 @@ if (navigator.geolocation) {
   })
 }
 
-const Base_URL = "http://api.weatherapi.com/v1"
+const Base_URL = "https://api.weatherapi.com/v1"
 const API_KEY = "81172e1ec4b14c31a1f204002241206"
 
 function getData(location) {
@@ -42,7 +42,7 @@ function displayToday(data) {
   </div>
   <h2 class="location">${location}</h2>
   <h3 class="py-2"><strong>${temperature} °C</strong> </h3>
-  <span class="condition"><img src="http:${icon}" alt="">${condition}</span>
+  <span class="condition"><img src="https:${icon}" alt="">${condition}</span>
   `
   current.innerHTML = divContent;
   current.style.opacity = 1;
@@ -61,7 +61,7 @@ function displayTomorrow(data) {
   </div>
   <h3 class="py-2 text-warning"><strong>${max} °C</strong></h3>
   <h5 class="text-info py-3"><strong>${min} °C</strong></h5>
-  <span class="condition"><img src="http:${icon}" alt="">${condition}</span>
+  <span class="condition"><img src="https:${icon}" alt="">${condition}</span>
   `
   tomorrow.innerHTML = divContent;
   tomorrow.style.opacity = 1;
@@ -81,7 +81,7 @@ function displayDayAfter(data) {
   </div>
  <h3 class="py-2 text-warning"><strong>${max} °C</strong></h3>
   <h5 class="text-info py-3"><strong>${min} °C</strong></h5>
-  <span class="condition"><img src="http:${icon}" alt="">${condition}</span>
+  <span class="condition"><img src="https:${icon}" alt="">${condition}</span>
   `
   dayAfter.innerHTML = divContent;
   dayAfter.style.opacity = 1;
