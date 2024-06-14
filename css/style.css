@@ -154,3 +154,7 @@ input::placeholder {
         height: 80vw;
     }
 }
+
+.fa-rotate-45{
+    transform: rotate(45deg);
+}

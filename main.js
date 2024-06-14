@@ -36,13 +36,27 @@ function displayToday(data) {
   let temperature = Math.round(data.current.temp_c)
   let icon = data.current.condition.icon
   let condition = data.current.condition.text
+  let percentage = data.current.precip_in
+  let speed = data.current.wind_kph
+  let direction = data.current.wind_dir
   let divContent = ` 
-  <div class="card-header bg-dark d-flex justify-content-evenly flex-wrap">
+  <div class="card-header px-sm-5 bg-dark d-flex justify-content-around flex-wrap">
     <span>${date[0]}</span><br><span class="bg-gradient rounded-3 px-3" >${date[1]} ${date[2]}</span>
   </div>
   <h2 class="location">${location}</h2>
   <h3 class="py-2"><strong>${temperature} °C</strong> </h3>
   <span class="condition"><img src="https:${icon}" alt="">${condition}</span>
+  <div class="d-flex justify-content-evenly py-3">
+      <div>
+          <i class="fa fa-umbrella fa-rotate-45 text-white me-2"></i><span>${percentage} %</span>
+      </div>
+      <div>
+          <i class="fa fa-wind text-white me-2"></i><span>${speed} km/h</span>
+      </div>
+      <div>
+          <i class="fa fa-compass text-white me-2"></i><span>${direction}</span>
+      </div>
+  </div>
   `
   current.innerHTML = divContent;
   current.style.opacity = 1;
