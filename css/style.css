@@ -8,8 +8,6 @@
     src: url('../fonts/Product\ Sans\ Regular.ttf') format('truetype');
 }
 
-
-
 * {
     box-sizing: border-box;
     margin: 0;
@@ -34,7 +32,6 @@ h4 {
     margin: 0 !important;
 }
 
-
 input,
 .card {
     background-color: #191919 !important;
@@ -46,8 +43,15 @@ input::placeholder {
     opacity: 1;
 }
 
+.fa-rotate-45{
+    transform: rotate(45deg);
+}
 
-/* codepen */
+.card {
+    opacity: 0;
+}
+
+/* codepen: https://codepen.io/jamesfinn180/pen/VwzENbR */
 .planet-container {
     border-radius: 50%;
     box-shadow: 5px -3px 10px 3px #5e90f1;
@@ -144,17 +148,9 @@ input::placeholder {
     }
 }
 
-.card {
-    opacity: 0;
-}
-
 @media only screen and (orientation: portrait) {
     .planet-container {
         width: 80vw;
         height: 80vw;
     }
-}
-
-.fa-rotate-45{
-    transform: rotate(45deg);
 }

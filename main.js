@@ -1,3 +1,4 @@
+// region permission
 if (navigator.geolocation) {
   navigator.geolocation.getCurrentPosition(function (position) {
     let latitude = position.coords.latitude
@@ -7,9 +8,9 @@ if (navigator.geolocation) {
   })
 }
 
+// region GET request
 const Base_URL = "https://api.weatherapi.com/v1"
 const API_KEY = "81172e1ec4b14c31a1f204002241206"
-
 function getData(location) {
   const params = `key=${API_KEY}&q=${location}&days=3`
   fetch(Base_URL + "/forecast.json?" + params)
@@ -23,29 +24,32 @@ function getData(location) {
     })
 }
 
+// region search
 document.getElementById('searchButton').addEventListener('click', function (event) {
-  event.preventDefault()
+  event.preventDefault() // for button to work at search
   let locationInput = document.getElementById('locationInput').value
   getData(locationInput)
 });
 
+// region card 1
 function displayToday(data) {
   let current = document.getElementById("day-1")
+
   let location = data.location.name
   let date = formatDate(data.forecast.forecastday[0].date)
   let temperature = Math.round(data.current.temp_c)
   let icon = data.current.condition.icon
   let condition = data.current.condition.text
-  let percentage = data.current.precip_in
+  let percentage = data.forecast.forecastday[0].day.daily_chance_of_rain
   let speed = data.current.wind_kph
   let direction = data.current.wind_dir
+
   let divContent = ` 
   <div class="card-header px-sm-5 bg-dark d-flex justify-content-around flex-wrap">
     <span>${date[0]}</span><br><span class="bg-gradient rounded-3 px-3" >${date[1]} ${date[2]}</span>
   </div>
   <h2 class="location">${location}</h2>
   <h3 class="py-2"><strong>${temperature} °C</strong> </h3>
-  <span class="condition"><img src="https:${icon}" alt="">${condition}</span>
   <div class="d-flex justify-content-evenly py-3">
       <div>
           <i class="fa fa-umbrella fa-rotate-45 text-white me-2"></i><span>${percentage} %</span>
@@ -57,18 +61,22 @@ function displayToday(data) {
           <i class="fa fa-compass text-white me-2"></i><span>${direction}</span>
       </div>
   </div>
+  <span class="condition"><img src="https:${icon}" alt="">${condition}</span>
   `
   current.innerHTML = divContent;
   current.style.opacity = 1;
 }
 
+// region card 2
 function displayTomorrow(data) {
   let tomorrow = document.getElementById("day-2")
+
   let date = formatDate(data.forecast.forecastday[1].date)[0]
   let max = Math.round(data.forecast.forecastday[1].day.maxtemp_c)
   let min = Math.round(data.forecast.forecastday[1].day.mintemp_c)
   let icon = data.forecast.forecastday[1].day.condition.icon
   let condition = data.forecast.forecastday[1].day.condition.text
+
   let divContent = `
   <div class="card-header bg-dark d-flex justify-content-around">
     <span>${date}</span>
@@ -82,13 +90,16 @@ function displayTomorrow(data) {
 
 }
 
+// region card 3
 function displayDayAfter(data) {
   let dayAfter = document.getElementById("day-3")
+
   let date = formatDate(data.forecast.forecastday[2].date)[0]
   let max = Math.round(data.forecast.forecastday[2].day.maxtemp_c)
   let min = Math.round(data.forecast.forecastday[2].day.mintemp_c)
   let icon = data.forecast.forecastday[2].day.condition.icon
   let condition = data.forecast.forecastday[2].day.condition.text
+
   let divContent = `
   <div class="card-header bg-dark d-flex justify-content-around">
     <span>${date}</span>
@@ -102,6 +113,7 @@ function displayDayAfter(data) {
 
 }
 
+// region utility function
 function formatDate(inputDate) {
   const date = new Date(inputDate);
   const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
